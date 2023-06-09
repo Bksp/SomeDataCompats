@@ -1,35 +1,28 @@
-name: CI
+name: Crear archivo ZIP
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-
-      - name: Get commit hash
-        id: commit_hash
-        run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
-
-      - name: Compress files into a zip archive
-        run: zip -r SOMEDATACOMPATS_${{ steps.commit_hash.outputs.hash }}.zip .
-
-      - name: Publish zip file
-        run: |
-          # Aquí puedes agregar los comandos o acciones para publicar el archivo zip
-          echo "Publishing SOMEDATACOMPATS_${{ steps.commit_hash.outputs.hash }}.zip"
+    - name: Checkout del repositorio
+      uses: actions/checkout@v2
+      
+    - name: Obtener la versión del commit
+      id: get_version
+      run: echo ::set-output name=VERSION::$(git rev-parse --short HEAD)
+      
+    - name: Crear archivo ZIP
+      run: |
+        zip -r SOMEDATACOMPATS-${{ steps.get_version.outputs.VERSION }}.zip .
+      
+    - name: Subir archivo ZIP
+      uses: actions/upload-artifact@v2
+      with:
+        name: archivos-zip
+        path: SOMEDATACOMPATS-${{ steps.get_version.outputs.VERSION }}.zip
