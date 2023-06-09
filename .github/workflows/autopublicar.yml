@@ -22,7 +22,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1.0.0
       env:
-        github-token: ${{ secrets.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 }}
+        github-token: ${{ secrets.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 }}
       with:
         tag_name: v1.0.0
         release_name: Release v1.0.0
@@ -33,7 +33,7 @@ jobs:
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1.0.0
       env:
-        github-token: ${{ secrets.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 }}
+        github-token: ${{ secrets.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 }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./SOMEDATACOMPATS.zip
@@ -43,7 +43,7 @@ jobs:
     - name: Publicar lanzamiento
       uses: softprops/action-gh-release@v1
       env:
-        github-token: ${{ secrets.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 }}
+        github-token: ${{ secrets.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 }}
       with:
         tag_name: v1.0.0
         release_name: Release v1.0.0
