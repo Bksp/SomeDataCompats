@@ -1,4 +1,5 @@
-name: Auto Publicar Commit
+name: Comprimir archivos en zip y publicar release
+
 on:
   push:
     branches:
@@ -9,35 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout del repositorio
-      uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v2
 
-    - name: Crear archivo ZIP
-      run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        COMMIT_SHA=$(git rev-parse --short HEAD)
-        FILENAME="SOMEDATACOMPS-$COMMIT_SHA.zip"
-        zip -r "$FILENAME" .
-        echo "::setOutput name=zip-file::$FILENAME"
-
-    - name: Crear lanzamiento de GitHub
-      id: create_release
-      uses: actions/create-release@v1
+    - name: Comprimir archivos en zip
+      uses: montudor/action-zip@v1
       with:
-        GITHUB_TOKEN: ${{ secrets.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 }}
-        tag_name: ${{ github.sha }}
-        release_name: Release ${{ github.sha }}
-        body: |
-          Release ${{ github.sha }}
+        args: zip -qq -r SOMEDATACOMPATS.zip carpeta/
+
+    - name: Publicar release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: SOMEDATACOMPATS.zip
+        tag_name: v1.0.0
+        name: Release v1.0.0
+        body: Descripción del release.
         draft: false
-        prerelease: false
-
-    - name: Subir archivo ZIP
-      uses: actions/upload-release-asset@v1
-      with:
-        GITHUB_TOKEN: ${{ secrets.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 }}
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ steps.build.outputs.zip-file }}
-        asset_name: SOMEDATACOMPS.zip
-        asset_content_type: application/zip
