@@ -1,50 +1,19 @@
-name: Publicar lanzamiento
+name: GitHub Actions Secret Example
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  secrets-in-github-actions:
+    runs-on: windows-latest
 
+    # The Secrect Actions GitHub example has three steps
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Comprimir archivos en zip
-      uses: montudor/action-zip@v1
-      with:
-        args: zip -qq -r SOMEDATACOMPATS.zip ./data ./pack.mcmeta
-
-    - name: Crear lanzamiento
-      id: create_release
-      uses: actions/create-release@v1.0.0
-      env:
-        github_token: ${{ secrets.API_TOKEN }}
-      with:
-        tag_name: v1.0.0
-        release_name: Release v1.0.0
-        draft: false
-        prerelease: false
-
-    - name: Cargar archivo adjunto al lanzamiento
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        github_token: ${{ secrets.API_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./SOMEDATACOMPATS.zip
-        asset_name: SOMEDATACOMPATS.zip
-        asset_content_type: application/zip
-
-    - name: Publicar lanzamiento
-      uses: softprops/action-gh-release@v1
-      env:
-        github_token: ${{ secrets.API_TOKEN }}
-      with:
-        tag_name: v1.0.0
-        release_name: Release v1.0.0
-        body: Descripción del release.
+      # Show how to print unmasked GitHub secrets to the console
+      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+        run: |
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.API_TOKEN }}
+          echo "Trick to echo GitHub Actions Secret:  "
+          echo ${{secrets.API_TOKEN}} | sed 's/./& /g' 
