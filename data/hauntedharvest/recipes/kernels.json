@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hauntedharvest:corn"
+    }
+  ],
+  "result": {
+    "item": "hauntedharvest:kernels",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "hauntedharvest:flag",
+      "flag": "corn"
+    }
+  ]
+}

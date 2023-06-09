@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:leaves",
+    "minecraft:sugar_cane",
+    "minecraft:apple",
+    "minecraft:bamboo",
+    "#alexsmobs:bananas",
+    "neapolitan:banana",
+    "neapolitan:dried_banana",
+    "neapolitan:banana_bunch",
+    "neapolitan:banana_bread",
+    "neapolitan:bananarrow"
+  ]
+}

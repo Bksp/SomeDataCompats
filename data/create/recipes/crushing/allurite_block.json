@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "galosphere:allurite_block"
+    }
+  ],
+  "processingTime": 150,
+  "results": [
+    {
+      "count": 3,
+      "item": "galosphere:allurite_shard"
+    },
+    {
+      "chance": 0.5,
+      "item": "galosphere:allurite_shard"
+    }
+  ]
+}

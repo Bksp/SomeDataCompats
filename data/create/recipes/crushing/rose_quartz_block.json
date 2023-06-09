@@ -1,0 +1,19 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "biomesoplenty:rose_quartz_block"
+    }
+  ],
+  "processingTime": 150,
+  "results": [
+    {
+      "count": 3,
+      "item": "biomesoplenty:rose_quartz_shard"
+    },
+    {
+      "chance": 0.5,
+      "item": "biomesoplenty:rose_quartz_shard"
+    }
+  ]
+}

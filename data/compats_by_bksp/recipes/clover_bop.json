@@ -1,0 +1,18 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "buzzier_bees:four_leaf_clover"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      
+        "count": 2,
+        "item": "delightful:chopped_clover"
+    }
+  ]
+}

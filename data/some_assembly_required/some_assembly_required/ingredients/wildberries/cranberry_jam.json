@@ -1,0 +1,13 @@
+{
+  "item": "wildberries:cranberry_jam",
+  "displayItem": {
+    "item": "some_assembly_required:spread",
+    "nbt": {
+      "Color": 14374723
+    }
+  },
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "soundEvent": "some_assembly_required:block.sandwich.add_item.slimy"
+}

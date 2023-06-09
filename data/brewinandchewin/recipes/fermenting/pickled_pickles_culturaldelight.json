@@ -1,0 +1,25 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "experience": 0.6,
+  "fermentingtime": 12000,
+  "fluiditem": {
+    "item": "minecraft:honey_bottle"
+  },
+  "ingredients": [
+    {
+      "item": "culturaldelights:cucumber"
+    },
+    {
+      "item": "culturaldelights:cucumber"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ],
+  "recipe_book_tab": "misc",
+  "result": {
+    "count": 2,
+    "item": "brewinandchewin:pickled_pickles"
+  },
+  "temperature": 2
+}

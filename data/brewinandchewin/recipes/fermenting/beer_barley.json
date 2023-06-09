@@ -1,0 +1,27 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "container": {
+    "item": "brewinandchewin:tankard"
+  },
+  "experience": 0.6,
+  "fermentingtime": 12000,
+  "fluiditem": {
+    "item": "minecraft:water_bucket"
+  },
+  "ingredients": [
+    {
+      "item": "biomesoplenty:barley"
+    },
+    {
+      "item": "biomesoplenty:barley"
+    },
+    {
+      "item": "biomesoplenty:barley"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "item": "brewinandchewin:beer"
+  },
+  "temperature": 3
+}

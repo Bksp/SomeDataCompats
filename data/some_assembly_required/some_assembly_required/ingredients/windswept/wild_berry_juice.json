@@ -1,0 +1,13 @@
+{
+  "item": "windswept:wild_berry_juice",
+  "displayItem": {
+    "item": "some_assembly_required:spread",
+    "nbt": {
+      "Color": 11948950
+    }
+  },
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "soundEvent": "some_assembly_required:block.sandwich.add_item.slimy"
+}

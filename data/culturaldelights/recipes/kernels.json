@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "culturaldelights:corn_cob"
+    }
+  ],
+  "result": {
+    "item": "culturaldelights:corn_kernels",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "hauntedharvest:flag",
+      "flag": "corn"
+    }
+  ]
+}

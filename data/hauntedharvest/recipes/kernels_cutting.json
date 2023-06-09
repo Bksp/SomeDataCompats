@@ -1,0 +1,27 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "hauntedharvest:corn"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "hauntedharvest:kernels"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "type": "hauntedharvest:flag",
+      "flag": "corn"
+    }
+  ]
+}
