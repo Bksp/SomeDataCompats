@@ -16,7 +16,7 @@ jobs:
     - name: Comprimir archivos en zip
       uses: montudor/action-zip@v1
       with:
-        args: zip -qq -r SOMEDATACOMPATS.zip carpeta/
+        args: zip -qq -r SOMEDATACOMPATS.zip main/data main/pack.mcmeta
 
     - name: Publicar release
       uses: softprops/action-gh-release@v1
