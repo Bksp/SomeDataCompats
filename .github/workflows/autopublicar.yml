@@ -19,7 +19,7 @@ jobs:
         COMMIT_SHA=$(git rev-parse --short HEAD)
         FILENAME="SOMEDATACOMPS-$COMMIT_SHA.zip"
         zip -r "$FILENAME" .
-        echo "::set-output name=zip-file::$FILENAME"
+        echo "::setOutput name=zip-file::$FILENAME"
 
     - name: Crear lanzamiento de GitHub
       id: create_release
