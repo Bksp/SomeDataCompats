@@ -1,22 +1,13 @@
-name: Auto Publicar Commit
-on:
-  push:
-    branches:
-      - main
+steps:
+  - uses: actions/checkout@v3
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout del repositorio
-      uses: actions/checkout@v2
-
-    - name: Crear archivo ZIP
-      run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        COMMIT_SHA=$(git rev-parse --short HEAD)
-        FILENAME="SOMEDATACOMPS-$COMMIT_SHA.zip"
-        zip -r "$FILENAME" .
-        echo "::set-output name=zip-file::$FILENAME"
+  # create a Zip package from files in the "reports" folder; create package in "packaging" folder
+  - name: Create a Zip package 🐙
+    uses: OctopusDeploy/create-zip-package-action@v3
+    with:
+      package_id: 'DemoPackage'
+      version: '1.0.0'
+      output_folder: './packaging'
+      base_path: reports
+      files: |
+        **/*.*
