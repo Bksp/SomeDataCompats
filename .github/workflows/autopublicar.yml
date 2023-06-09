@@ -1,5 +1,4 @@
-name: Crear archivo ZIP
-
+name: Auto Publicar Commit
 on:
   push:
     branches:
@@ -12,17 +11,35 @@ jobs:
     steps:
     - name: Checkout del repositorio
       uses: actions/checkout@v2
-      
-    - name: Obtener la versión del commit
-      id: get_version
-      run: echo ::set-output name=VERSION::$(git rev-parse --short HEAD)
-      
+
     - name: Crear archivo ZIP
       run: |
-        zip -r SOMEDATACOMPATS-${{ steps.get_version.outputs.VERSION }}.zip .
-      
-    - name: Subir archivo ZIP
-      uses: actions/upload-artifact@v2
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        COMMIT_SHA=$(git rev-parse --short HEAD)
+        FILENAME="SOMEDATACOMPS-$COMMIT_SHA.zip"
+        zip -r "$FILENAME" .
+        echo "::set-output name=zip-file::$FILENAME"
+
+    - name: Crear lanzamiento de GitHub
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: archivos-zip
-        path: SOMEDATACOMPATS-${{ steps.get_version.outputs.VERSION }}.zip
+        tag_name: ${{ github.sha }}
+        release_name: Release ${{ github.sha }}
+        body: |
+          Release ${{ github.sha }}
+        draft: false
+        prerelease: false
+
+    - name: Subir archivo ZIP
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.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 }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ steps.build.outputs.zip-file }}
+        asset_name: SOMEDATACOMPS.zip
+        asset_content_type: application/zip
