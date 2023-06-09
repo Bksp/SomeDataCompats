@@ -37,7 +37,7 @@ jobs:
     - name: Subir archivo ZIP
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.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 }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ${{ steps.build.outputs.zip-file }}
