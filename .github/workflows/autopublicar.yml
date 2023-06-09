@@ -24,9 +24,8 @@ jobs:
     - name: Crear lanzamiento de GitHub
       id: create_release
       uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
       with:
+        GITHUB_TOKEN: ${{ secrets.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 }}
         tag_name: ${{ github.sha }}
         release_name: Release ${{ github.sha }}
         body: |
@@ -36,9 +35,8 @@ jobs:
 
     - name: Subir archivo ZIP
       uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
       with:
+        GITHUB_TOKEN: ${{ secrets.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 }}
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ${{ steps.build.outputs.zip-file }}
         asset_name: SOMEDATACOMPS.zip
