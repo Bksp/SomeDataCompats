@@ -20,26 +20,3 @@ jobs:
         FILENAME="SOMEDATACOMPS-$COMMIT_SHA.zip"
         zip -r "$FILENAME" .
         echo "::set-output name=zip-file::$FILENAME"
-
-    - name: Crear lanzamiento de GitHub
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
-      with:
-        tag_name: ${{ github.sha }}
-        release_name: Release ${{ github.sha }}
-        body: |
-          Release ${{ github.sha }}
-        draft: false
-        prerelease: false
-
-    - name: Subir archivo ZIP
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ steps.build.outputs.zip-file }}
-        asset_name: SOMEDATACOMPS.zip
-        asset_content_type: application/zip
