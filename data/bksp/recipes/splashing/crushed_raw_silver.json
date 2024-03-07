@@ -1,0 +1,22 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_silver"
+    }
+  ],
+  "results": [
+    {
+      "count": 9,
+      "item": "galosphere:silver_nugget"
+    },
+    {
+      "chance": 0.25,
+      "item": "galosphere_delight:allurite_shiny_powder"
+    },
+    {
+      "chance": 0.25,
+      "item": "galosphere_delight:lumiere_shiny_powder"
+    }
+  ]
+}

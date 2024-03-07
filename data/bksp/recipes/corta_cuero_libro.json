@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    }
+  ],
+  "result": [
+    {
+      "count": 1,
+      "item": "minecraft:leather"
+    },
+    {
+      "count": 2,
+      "item": "minecraft:paper"
+    }
+  ],
+  "tool": {
+    "tag": "forge:shears"
+  }
+}

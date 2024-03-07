@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:smithing",
+  "base": {"item": "minecraft:netherite_boots"},
+  "addition": {"item": "additionaladditions:gold_ring"},
+  "result": {"item": "advancednetherite:netherite_gold_boots"}
+}
