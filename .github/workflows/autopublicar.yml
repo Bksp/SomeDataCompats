@@ -23,7 +23,7 @@ jobs:
       uses: actions/create-release@v1.0.0
       env:
         github_token: ${{ secrets.API_TOKEN }}
-      with:
+      with: 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
         tag_name: v1.0.0
         release_name: Release v1.0.0
         draft: false
