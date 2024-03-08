@@ -1,9 +1,15 @@
+name: Mi flujo de trabajo
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # Actualizado a v3 para Node.js 20
+      - uses: actions/checkout@v3
 
       - name: Construir proyecto (reemplazar con su comando específico)
         run: ./build.sh
@@ -11,13 +17,12 @@ jobs:
       - name: Crear archivo ZIP (reemplazar con su comando específico)
         run: zip -qr ${{ github.sha }}.zip ./dist
 
-      - uses: actions/upload-artifact@v3  # Actualizado a v3 para Node.js 20
+      - uses: actions/upload-artifact@v3
         with:
           name: ${{ github.sha }}.zip
           path: ${{ github.sha }}.zip
 
-      # Considera usar una versión más reciente de actions/create-release o una alternativa
-      - uses: actions/create-release@vX  # Actualiza vX a una versión compatible con Node.js 20 (si está disponible)
+      - uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN2 }}
         with:
@@ -30,3 +35,4 @@ jobs:
 
             - Cambios en esta versión...
             - ...
+
