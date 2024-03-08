@@ -1,28 +1,23 @@
-name: Publicar automáticamente ZIP al confirmar
-
-on:
-  push:
-    branches: [ main ]
-
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3  # Actualizado a v3 para Node.js 20
 
-      - name: Instalar herramienta de creación de ZIP (si es necesario)
-        run: sudo apt-get update && sudo apt-get install -y zip
+      - name: Construir proyecto (reemplazar con su comando específico)
+        run: ./build.sh
 
-      - name: Crear archivo ZIP
-        run: zip -qr ${{ github.sha }}.zip ./data ./pack.mcmeta
+      - name: Crear archivo ZIP (reemplazar con su comando específico)
+        run: zip -qr ${{ github.sha }}.zip ./dist
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3  # Actualizado a v3 para Node.js 20
         with:
           name: ${{ github.sha }}.zip
           path: ${{ github.sha }}.zip
 
-      - uses: actions/create-release@v1
+      # Considera usar una versión más reciente de actions/create-release o una alternativa
+      - uses: actions/create-release@vX  # Actualiza vX a una versión compatible con Node.js 20 (si está disponible)
         env:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN2 }}
         with:
@@ -30,4 +25,8 @@ jobs:
           release_name: "Versión ${{ github.sha }}"
           draft: false
           prerelease: false
+          body: |
+            **Descripción de la release:**
 
+            - Cambios en esta versión...
+            - ...
