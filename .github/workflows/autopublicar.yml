@@ -2,33 +2,32 @@ name: Publicar automáticamente ZIP al confirmar
 
 on:
   push:
-    branches: [ main ]  # Solo se activa al enviar a la rama "main"
+    branches: [ main ]
 
 jobs:
   build_and_publish:
-    runs-on: ubuntu-latest  # Se ejecuta en un runner Ubuntu reciente
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # Obtiene el código del repositorio
+      - uses: actions/checkout@v3
 
       - name: Instalar herramienta de creación de ZIP (si es necesario)
-        run: sudo apt-get update && sudo apt-get install -y zip  # Instala "zip" si no está disponible
+        run: sudo apt-get update && sudo apt-get install -y zip
 
       - name: Crear archivo ZIP
-        run: zip -qr ${{ github.sha }}.zip ./data ./pack.mcmeta  # Usa el SHA de la confirmación para un nombre único
+        run: zip -qr ${{ github.sha }}.zip ./data ./pack.mcmeta
 
-      - uses: actions/upload-artifact@v2  # Sube el artefacto ZIP
+      - uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.sha }}.zip  # Coincide con el nombre del archivo ZIP
-          path: ${{ github.sha }}.zip  # Especifica la ruta del archivo
+          name: ${{ github.sha }}.zip
+          path: ${{ github.sha }}.zip
 
-      - uses: actions/create-release@v1  # Crea una versión (opcional)
+      - uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.xtQ5I68mlibgYD6WHBFBQjdniLsPyP4S5DQS }}
         with:
-          tag_name: ${{ github.sha }}  # Usa el SHA de la confirmación para la versión (opcional)
-          release_name: "Versión ${{ github.sha }}"  # Nombre descriptivo de la versión (opcional)
-          draft: false  # Publicar una versión no provisional (opcional)
-          prerelease: false  # No es una versión preliminar (opcional)
-
+          tag_name: ${{ github.sha }}
+          release_name: "Versión ${{ github.sha }}"
+          draft: false
+          prerelease: false
 
