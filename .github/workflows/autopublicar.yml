@@ -24,7 +24,7 @@ jobs:
 
       - uses: actions/create-release@v1  # Crea una versión (opcional)
         env:
-          GITHUB_TOKEN: ${{ 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 }}
+          GITHUB_TOKEN: ${{ secrets.xtQ5I68mlibgYD6WHBFBQjdniLsPyP4S5DQS }}
         with:
           tag_name: ${{ github.sha }}  # Usa el SHA de la confirmación para la versión (opcional)
           release_name: "Versión ${{ github.sha }}"  # Nombre descriptivo de la versión (opcional)
